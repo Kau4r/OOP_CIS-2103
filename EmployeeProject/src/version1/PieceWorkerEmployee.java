@@ -81,8 +81,10 @@ public class PieceWorkerEmployee {
     }
 
     public double computeSalary() {
-        int bonus = getTotalPiecesFinished() / 100;
-        return (getTotalPiecesFinished() * ratePerPiece) + (bonus * (10 * ratePerPiece));
+        double bonus = (getTotalPiecesFinished() / 100) * (10 * ratePerPiece);
+        double totalSalary=(getTotalPiecesFinished() * ratePerPiece) + bonus ;
+
+        return totalSalary;
     }
 
     public void displayInfo() {

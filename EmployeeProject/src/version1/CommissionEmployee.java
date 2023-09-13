@@ -73,9 +73,9 @@ public class CommissionEmployee {
 
         if (getTotalSales() < 50_000) {
             commission = getTotalSales() * 0.05;
-        } else if (getTotalSales() >= 50_000 && getTotalSales() < 100_000) {
+        } else if (getTotalSales() < 100_000) {
             commission = getTotalSales() * 0.20;
-        } else if (getTotalSales() >= 100_000 && getTotalSales() < 500_000) {
+        } else if (getTotalSales() < 500_000) {
             commission = getTotalSales() * 0.30;
         } else {
             commission = getTotalSales() * 0.50;
