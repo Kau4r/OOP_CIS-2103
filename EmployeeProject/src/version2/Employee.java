@@ -70,7 +70,7 @@ public class Employee {
         public Hourly(int empID, String empName, LocalDate empBirthDate, LocalDate empDateHired, float totalHoursWorked,
                 float ratePerHour) {
             super(empID, empName, empBirthDate, empDateHired);
-            this.totalHoursWorked = totalHoursWorked;
+            this.totalHoursWorked = Math.max(totalHoursWorked, 0);
             this.ratePerHour = ratePerHour;
         }
 
@@ -79,7 +79,7 @@ public class Employee {
         }
 
         public void setTotalHoursWorked(float totalHoursWorked) {
-            this.totalHoursWorked = totalHoursWorked;
+            this.totalHoursWorked = Math.max(totalHoursWorked, 0);
         }
 
         public float getRatePerHour() {
@@ -123,7 +123,7 @@ public class Employee {
         public Piece(int empID, String empName, LocalDate empBirthDate, LocalDate empDateHired, int totalPiecesFinished,
                 float ratePerPiece) {
             super(empID, empName, empBirthDate, empDateHired);
-            this.totalPiecesFinished = totalPiecesFinished;
+            this.totalPiecesFinished = Math.max(totalPiecesFinished, 0);
             this.ratePerPiece = ratePerPiece;
         }
 
@@ -132,7 +132,7 @@ public class Employee {
         }
 
         public void setTotalPiecesFinished(int totalPiecesFinished) {
-            this.totalPiecesFinished = totalPiecesFinished;
+            this.totalPiecesFinished = Math.max(totalPiecesFinished, 0);
         }
 
         public float getRatePerPiece() {
@@ -144,7 +144,10 @@ public class Employee {
         }
 
         public double computeSalary() {
-            double bonus = (getTotalPiecesFinished() / 100) * (10 * ratePerPiece);
+            int bonus = (getTotalPiecesFinished() > 100)
+                    ? (int) ((Math.round(getTotalPiecesFinished()) / 100) * (10 * ratePerPiece))
+                    : 0;
+
             double totalSalary = (getTotalPiecesFinished() * ratePerPiece) + bonus;
 
             return totalSalary;
@@ -174,15 +177,15 @@ public class Employee {
         public Commission(int empID, String empName, LocalDate empBirthDate, LocalDate empDateHired,
                 double totalSales) {
             super(empID, empName, empBirthDate, empDateHired);
-            this.totalSales = totalSales;
+            this.totalSales = Math.max(totalSales, 0);
         }
 
         public double getTotalSales() {
             return totalSales;
         }
 
-        public void setTotalSales(double totalSalary) {
-            this.totalSales = totalSalary;
+        public void setTotalSales(double totalSales) {
+            this.totalSales = Math.max(totalSales, 0);
         }
 
         public double computeSalary() {

@@ -17,7 +17,7 @@ public class BasePlusCommissionEmployee {
         this.empName = empName;
         this.empBirthDate = empBirthDate;
         this.empDateHired = empDateHired;
-        this.BaseSalary= BaseSalary;
+        this.BaseSalary= Math.max(BaseSalary, 0);
     }
 
     public BasePlusCommissionEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate) {
@@ -66,7 +66,7 @@ public class BasePlusCommissionEmployee {
     }
 
     public void setBaseSalary(double baseSalary) {
-        BaseSalary = baseSalary;
+        BaseSalary = Math.max(baseSalary, 0);
     }
 
     public double getTotalSales() {
@@ -82,9 +82,9 @@ public class BasePlusCommissionEmployee {
 
         if (getTotalSales() < 50_000) {
             commission = getTotalSales() * 0.05;
-        } else if (getTotalSales() >= 50_000 && getTotalSales() < 100_000) {
+        } else if (getTotalSales() >= 50_000) {
             commission = getTotalSales() * 0.20;
-        } else if (getTotalSales() >= 100_000 && getTotalSales() < 500_000) {
+        } else if (getTotalSales() >= 100_000) {
             commission = getTotalSales() * 0.30;
         } else {
             commission = getTotalSales() * 0.50;

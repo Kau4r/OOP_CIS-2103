@@ -17,7 +17,7 @@ public class CommissionEmployee {
         this.empName = empName;
         this.empBirthDate = empBirthDate;
         this.empDateHired = empDateHired;
-        this.totalSales = totalSales;
+        this.totalSales = Math.max(totalSales, 0);
     }
 
     public CommissionEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthHired) {
@@ -65,7 +65,7 @@ public class CommissionEmployee {
     }
 
     public void setTotalSales(double totalSales) {
-        this.totalSales = totalSales;
+        this.totalSales = Math.max(totalSales, 0);
     }
 
     public double computeSalary() {

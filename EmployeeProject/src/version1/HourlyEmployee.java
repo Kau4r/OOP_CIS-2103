@@ -19,7 +19,7 @@ public class HourlyEmployee {
         this.empName = empName;
         this.empBirthDate = empBirthDate;
         this.empDateHired = empDateHired;
-        this.totalHoursWorked = totalHoursWorked;
+        this.totalHoursWorked = Math.max(totalHoursWorked, 0);
         this.ratePerHour = ratePerHour;
     }
 
@@ -65,11 +65,11 @@ public class HourlyEmployee {
     }
 
     public float getTotalHoursWorked() {
-        return Math.max(totalHoursWorked, 0);
+        return totalHoursWorked;
     }
 
     public void setTotalHoursWorked(float totalHoursWorked) {
-        this.totalHoursWorked = totalHoursWorked;
+        this.totalHoursWorked = Math.max(totalHoursWorked, 0);
     }
 
     public float getRatePerHour() {

@@ -19,7 +19,7 @@ public class PieceWorkerEmployee {
         this.empName = empName;
         this.empBirthDate = empBirthDate;
         this.empDateHired = empDateHired;
-        this.totalPiecesFinished = totalPiecesFinished;
+        this.totalPiecesFinished = Math.max(totalPiecesFinished, 0);
         this.ratePerPiece = ratePerPiece;
     }
 
@@ -81,8 +81,11 @@ public class PieceWorkerEmployee {
     }
 
     public double computeSalary() {
-        double bonus = (getTotalPiecesFinished() / 100) * (10 * ratePerPiece);
-        double totalSalary=(getTotalPiecesFinished() * ratePerPiece) + bonus ;
+        int bonus = (getTotalPiecesFinished() > 100)
+                ? (int) ((Math.round(getTotalPiecesFinished()) / 100) * (10 * ratePerPiece))
+                : 0;
+
+        double totalSalary = (getTotalPiecesFinished() * ratePerPiece) + bonus;
 
         return totalSalary;
     }
