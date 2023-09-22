@@ -1,14 +1,14 @@
-package version2;
+package version3;
 
 import java.time.LocalDate;
 
 public class Employee {
     private int empID;
-    private String empName;
+    private Name empName;
     private LocalDate empBirthDate;
     private LocalDate empDateHired;
 
-    public Employee(int empID, String empName, LocalDate empBirthDate, LocalDate empDateHired) {
+    public Employee(int empID, Name empName, LocalDate empBirthDate, LocalDate empDateHired) {
         this.empID = empID;
         this.empName = empName;
         this.empBirthDate = empBirthDate;
@@ -23,11 +23,11 @@ public class Employee {
         this.empID = empID;
     }
 
-    public String getEmpName() {
+    public Name getEmpName() {
         return empName;
     }
 
-    public void setEmpName(String empName) {
+    public void setEmpName(Name empName) {
         this.empName = empName;
     }
 
@@ -47,7 +47,7 @@ public class Employee {
         this.empDateHired = empDateHired;
     }
 
-    public void displayInfo(){
+    public void displayInfo() {
         System.out.println(this);
     }
 

@@ -1,11 +1,11 @@
-package version2;
+package version3;
 
 import java.time.LocalDate;
 
 public class Commission extends Employee {
     private double totalSales;
 
-    public Commission(int empID, String empName, LocalDate empBirthDate, LocalDate empDateHired,
+    public Commission(int empID, Name empName, LocalDate empBirthDate, LocalDate empDateHired,
             double totalSales) {
         super(empID, empName, empBirthDate, empDateHired);
         this.totalSales = Math.max(totalSales, 0);

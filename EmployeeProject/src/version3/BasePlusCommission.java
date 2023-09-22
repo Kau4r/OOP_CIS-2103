@@ -1,4 +1,4 @@
-package version2;
+package version3;
 
 import java.time.LocalDate;
 
@@ -13,7 +13,7 @@ public class BasePlusCommission extends Commission {
         this.baseSalary = baseSalary;
     }
 
-    public BasePlusCommission(int empID, String empName, LocalDate empBirthDate, LocalDate empDateHired,
+    public BasePlusCommission(int empID, Name empName, LocalDate empBirthDate, LocalDate empDateHired,
             double totalSales,
             double baseSalary) {
         super(empID, empName, empBirthDate, empDateHired, totalSales);

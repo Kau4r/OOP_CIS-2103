@@ -81,28 +81,23 @@ public class HourlyEmployee {
     }
 
     public double computeSalary() {
-        double overtime=(getTotalHoursWorked() - 40) * ratePerHour * 1.5;
-        double totalSalary= Math.min(getTotalHoursWorked(),40) * ratePerHour + overtime;
+        double overtime = (Math.max(getTotalHoursWorked(), 40) - 40) * ratePerHour * 1.5;
+        double totalSalary = Math.min(getTotalHoursWorked(), 40) * ratePerHour + overtime;
 
         return totalSalary;
     }
 
     public void displayInfo() {
-        System.out.printf("Employee Name: %s\n", getEmpName());
-        System.out.printf("Employee ID: %d\n", getEmpID());
-        System.out.printf("Date Hired: %s\n", getEmpDateHired());
-        System.out.printf("Date of Birth: %s\n", getEmpBirthDate());
-        System.out.printf("Rate per hour: %.2f\n", getRatePerHour());
-        System.out.printf("Total Hours Worked: %.2f hrs\n", getTotalHoursWorked());
+        System.out.println(this);
         System.out.printf("Salary: %.2f\n", computeSalary());
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Employee Name: %s\nEmployee ID: %d\nDate Hired: %s\nDate of Birth: %s\nRate per hour: %.2f\nTotal Hours Worked: %.2f hrs\nSalary: %.2f\n",
-                getEmpName(), getEmpID(), getEmpDateHired(), getEmpBirthDate(), getRatePerHour(), getTotalHoursWorked(),
-                computeSalary());
+                "Employee Name: %s\nEmployee ID: %d\nDate Hired: %s\nDate of Birth: %s\nRate per hour: %.2f\nTotal Hours Worked: %.2f hrs",
+                getEmpName(), getEmpID(), getEmpDateHired(), getEmpBirthDate(), getRatePerHour(),
+                getTotalHoursWorked());
     }
 
 }

@@ -1,4 +1,4 @@
-package version2;
+package version3;
 
 import java.time.LocalDate;
 
@@ -6,7 +6,7 @@ public class Piece extends Employee {
     private int totalPiecesFinished;
     private float ratePerPiece;
 
-    public Piece(int empID, String empName, LocalDate empBirthDate, LocalDate empDateHired, int totalPiecesFinished,
+    public Piece(int empID, Name empName, LocalDate empBirthDate, LocalDate empDateHired, int totalPiecesFinished,
             float ratePerPiece) {
         super(empID, empName, empBirthDate, empDateHired);
         this.totalPiecesFinished = Math.max(totalPiecesFinished, 0);

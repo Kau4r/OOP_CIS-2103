@@ -94,20 +94,15 @@ public class BasePlusCommissionEmployee {
     }
 
     public void displayInfo() {
-        System.out.printf("Employee Name: %s\n", getEmpName());
-        System.out.printf("Employee ID: %d\n", getEmpID());
-        System.out.printf("Date Hired: %s\n", getEmpDateHired());
-        System.out.printf("Date of Birth: %s\n", getEmpBirthDate());
-        System.out.printf("Base Salary: %.2f\n", getBaseSalary());
-        System.out.printf("Total Sales: %.2f\n", getTotalSales());
+        System.out.println(this);
         System.out.printf("Salary: %.2f\n", computeSalary());
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Employee Name: %s\nEmployee ID: %d\nDate Hired: %s\nDate of Birth: %s\nBase Salary: %.2f \nTotal Sales: %.2f\nSalary: %.2f\n",
-                getEmpName(), getEmpID(), getEmpDateHired(), getEmpBirthDate(),getBaseSalary(),getTotalSales(),computeSalary());
+                "Employee Name: %s\nEmployee ID: %d\nDate Hired: %s\nDate of Birth: %s\nBase Salary: %.2f \nTotal Sales: %.2f",
+                getEmpName(), getEmpID(), getEmpDateHired(), getEmpBirthDate(),getBaseSalary(),getTotalSales());
     }
 
 }

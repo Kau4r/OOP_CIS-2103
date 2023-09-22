@@ -1,4 +1,4 @@
-package version2;
+package version3;
 
 import java.time.LocalDate;
 
@@ -6,7 +6,7 @@ public class Hourly extends Employee {
     private float totalHoursWorked;
     private float ratePerHour;
 
-    public Hourly(int empID, String empName, LocalDate empBirthDate, LocalDate empDateHired, float totalHoursWorked,
+    public Hourly(int empID, Name empName, LocalDate empBirthDate, LocalDate empDateHired, float totalHoursWorked,
             float ratePerHour) {
         super(empID, empName, empBirthDate, empDateHired);
         this.totalHoursWorked = Math.max(totalHoursWorked, 0);

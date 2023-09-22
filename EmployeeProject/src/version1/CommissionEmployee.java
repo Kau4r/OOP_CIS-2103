@@ -69,36 +69,29 @@ public class CommissionEmployee {
     }
 
     public double computeSalary() {
-        double commission;
+        double com=0.5;
 
-        if (getTotalSales() < 50_000) {
-            commission = getTotalSales() * 0.05;
-        } else if (getTotalSales() < 100_000) {
-            commission = getTotalSales() * 0.20;
+        if(getTotalSales() < 100_000) {
+            com =  0.20;
         } else if (getTotalSales() < 500_000) {
-            commission = getTotalSales() * 0.30;
+            com = 0.30;
         } else {
-            commission = getTotalSales() * 0.50;
+            com =  0.50;
         }
-        return commission;
+        return totalSales * com;
 
     }
 
     public void displayInfo() {
-        System.out.printf("Employee Name: %s\n", getEmpName());
-        System.out.printf("Employee ID: %d\n", getEmpID());
-        System.out.printf("Date Hired: %s\n", getEmpDateHired());
-        System.out.printf("Date of Birth: %s\n", getEmpBirthDate());
-        System.out.printf("Total Sales: %.2f\n", getTotalSales());
-        System.out.printf("Salary: %.2f\n", computeSalary());
+        System.out.println(this);
+        System.out.printf("\nSalary: %.2f\n", computeSalary());
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Employee Name: %s\nEmployee ID: %d\nDate Hired: %s\nDate of Birth: %s\nTotal Sales: %.2f hrs\nSalary: %.2f\n",
-                getEmpName(), getEmpID(), getEmpDateHired(), getEmpBirthDate(), getTotalSales(),
-                computeSalary());
+                "Employee Name: %s\nEmployee ID: %d\nDate Hired: %s\nDate of Birth: %s\nTotal Sales: %.2f hrs",
+                getEmpName(), getEmpID(), getEmpDateHired(), getEmpBirthDate(), getTotalSales());
     }
 
 }
