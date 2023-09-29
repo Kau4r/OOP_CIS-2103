@@ -5,7 +5,8 @@ import java.time.*;
 public class CommissionEmployee {
     private int empID;
     private String empName;
-    private LocalDate empBirthDate, empDateHired;
+    private LocalDate empBirthDate;
+    private LocalDate empDateHired;
     private double totalSales;
 
     public CommissionEmployee() {
@@ -69,15 +70,16 @@ public class CommissionEmployee {
     }
 
     public double computeSalary() {
-        double com=0.5;
+        double com = 0.5;
 
-        if(getTotalSales() < 100_000) {
-            com =  0.20;
+        if (getTotalSales() < 100_000) {
+            com = 0.20;
         } else if (getTotalSales() < 500_000) {
             com = 0.30;
         } else {
-            com =  0.50;
+            com = 0.50;
         }
+        
         return totalSales * com;
 
     }

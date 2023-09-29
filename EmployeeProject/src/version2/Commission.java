@@ -20,19 +20,17 @@ public class Commission extends Employee {
     }
 
     public double computeSalary() {
-        double commission;
-
-        if (getTotalSales() < 50_000) {
-            commission = getTotalSales() * 0.05;
-        } else if (getTotalSales() < 100_000) {
-            commission = getTotalSales() * 0.20;
+        double com = 0.05;
+        
+        if (getTotalSales() >= 50_000 && getTotalSales() < 100_000 ) {
+            com = 0.20;
         } else if (getTotalSales() < 500_000) {
-            commission = getTotalSales() * 0.30;
+            com = 0.30;
         } else {
-            commission = getTotalSales() * 0.50;
+            com = 0.50;
         }
-        return commission;
 
+        return getTotalSales() * com;
     }
 
     public void displayInfo() {

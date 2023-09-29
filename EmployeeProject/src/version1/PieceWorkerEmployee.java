@@ -5,7 +5,8 @@ import java.time.*;
 public class PieceWorkerEmployee {
     private int empID;
     private String empName;
-    private LocalDate empBirthDate, empDateHired;
+    private LocalDate empBirthDate;
+    private LocalDate empDateHired;
     private int totalPiecesFinished;
     private float ratePerPiece;
 
@@ -20,7 +21,7 @@ public class PieceWorkerEmployee {
         this.empBirthDate = empBirthDate;
         this.empDateHired = empDateHired;
         this.totalPiecesFinished = Math.max(totalPiecesFinished, 0);
-        this.ratePerPiece = ratePerPiece;
+        this.ratePerPiece = Math.max(ratePerPiece, 0);
     }
 
     public PieceWorkerEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate) {
@@ -73,7 +74,7 @@ public class PieceWorkerEmployee {
     }
 
     public void setRatePerPiece(float ratePerPiece) {
-        this.ratePerPiece = ratePerPiece;
+        this.ratePerPiece = Math.max(ratePerPiece, 0);
     }
 
     public float getRatePerPiece() {
@@ -81,13 +82,9 @@ public class PieceWorkerEmployee {
     }
 
     public double computeSalary() {
-        int bonus = (getTotalPiecesFinished() > 100)
-                ? (int) ((Math.round(getTotalPiecesFinished()) / 100) * (10 * ratePerPiece))
-                : 0;
+        int bonus = totalPiecesFinished / 100;
 
-        double totalSalary = (getTotalPiecesFinished() * ratePerPiece) + bonus;
-
-        return totalSalary;
+        return totalPiecesFinished * ratePerPiece + bonus * 10 * ratePerPiece;
     }
 
     public void displayInfo() {

@@ -12,12 +12,13 @@ public class BasePlusCommissionEmployee {
     public BasePlusCommissionEmployee() {
     }
 
-    public BasePlusCommissionEmployee(int empID, String empName, LocalDate empBirthDate, LocalDate empDateHired,double BaseSalary) {
+    public BasePlusCommissionEmployee(int empID, String empName, LocalDate empBirthDate, LocalDate empDateHired,
+            double BaseSalary) {
         this.empID = empID;
         this.empName = empName;
         this.empBirthDate = empBirthDate;
         this.empDateHired = empDateHired;
-        this.BaseSalary= Math.max(BaseSalary, 0);
+        this.BaseSalary = Math.max(BaseSalary, 0);
     }
 
     public BasePlusCommissionEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthDate) {
@@ -25,9 +26,8 @@ public class BasePlusCommissionEmployee {
         this.empName = empName;
         this.empBirthDate = empBirthDate;
         this.empDateHired = empDateHired;
-        BaseSalary=20000;
+        BaseSalary = 20000;
     }
-    
 
     public int getEmpID() {
         return empID;
@@ -78,19 +78,17 @@ public class BasePlusCommissionEmployee {
     }
 
     public double computeSalary() {
-        double commission;
+        double com = 0.05;
 
-        if (getTotalSales() < 50_000) {
-            commission = getTotalSales() * 0.05;
-        } else if (getTotalSales() >= 50_000) {
-            commission = getTotalSales() * 0.20;
-        } else if (getTotalSales() >= 100_000) {
-            commission = getTotalSales() * 0.30;
+        if (getTotalSales() >= 50_000 && getTotalSales() < 100_000) {
+            com = 0.20;
+        } else if (getTotalSales() < 500_000) {
+            com = 0.30;
         } else {
-            commission = getTotalSales() * 0.50;
+            com = 0.50;
         }
-        return commission + BaseSalary;
 
+        return getTotalSales() * com + BaseSalary;
     }
 
     public void displayInfo() {
@@ -102,8 +100,7 @@ public class BasePlusCommissionEmployee {
     public String toString() {
         return String.format(
                 "Employee Name: %s\nEmployee ID: %d\nDate Hired: %s\nDate of Birth: %s\nBase Salary: %.2f \nTotal Sales: %.2f",
-                getEmpName(), getEmpID(), getEmpDateHired(), getEmpBirthDate(),getBaseSalary(),getTotalSales());
+                getEmpName(), getEmpID(), getEmpDateHired(), getEmpBirthDate(), getBaseSalary(), getTotalSales());
     }
 
 }
-

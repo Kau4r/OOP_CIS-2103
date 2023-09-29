@@ -5,7 +5,8 @@ import java.time.*;
 public class HourlyEmployee {
     private int empID;
     private String empName;
-    private LocalDate empBirthDate, empDateHired;
+    private LocalDate empBirthDate;
+    private LocalDate empDateHired;
     private float totalHoursWorked;
     private float ratePerHour;
 
@@ -20,7 +21,7 @@ public class HourlyEmployee {
         this.empBirthDate = empBirthDate;
         this.empDateHired = empDateHired;
         this.totalHoursWorked = Math.max(totalHoursWorked, 0);
-        this.ratePerHour = ratePerHour;
+        this.ratePerHour = Math.max(ratePerHour, 0);
     }
 
     public HourlyEmployee(int empID, String empName, LocalDate empDateHired, LocalDate empBirthHired) {
@@ -77,7 +78,7 @@ public class HourlyEmployee {
     }
 
     public void setRatePerHour(float ratePerHour) {
-        this.ratePerHour = ratePerHour;
+        this.ratePerHour = Math.max(ratePerHour, 0);
     }
 
     public double computeSalary() {
