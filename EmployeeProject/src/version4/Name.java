@@ -1,5 +1,4 @@
 package version4;
-
 public class Name {
     private String lastName;
     private String firstName;

@@ -1,5 +1,4 @@
 package version4;
-
 public class EmployeeRoster {
     private Employee[] empList;
     private int count = 0;
@@ -38,7 +37,7 @@ public class EmployeeRoster {
                 .println("|-----|------------------------------------------|--------------------|------------------|");
     }
 
-    public void displayEmpofType(String type) {
+    public void displayEmpOfType(String type) {
         Class<?> empType = switch (type.toUpperCase().charAt(0)) {
             case 'H' -> Hourly.class;
             case 'P' -> Piece.class;
@@ -63,18 +62,6 @@ public class EmployeeRoster {
         int x;
         for (x = 0; x < count; x++) {
             if (empList[x].toString().contains(key)) {
-                retRoster.addEmp(empList[x]);
-            }
-        }
-        return retRoster;
-    }
-
-    public EmployeeRoster searchEmp(int key) {
-        EmployeeRoster retRoster = new EmployeeRoster();
-
-        int x;
-        for (x = 0; x < count; x++) {
-            if (empList[x].toString().contains(String.valueOf(key))) {
                 retRoster.addEmp(empList[x]);
             }
         }
@@ -143,7 +130,7 @@ public class EmployeeRoster {
         int empNo = 0;
         int x;
         for (x = 0; x < count; x++) {
-            if (empList[x] instanceof Commission) {
+            if (empList[x] instanceof Commission && !(empList[x] instanceof BasePlusCommission)) {
                 empNo++;
             }
         }

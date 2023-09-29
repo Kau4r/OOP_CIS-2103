@@ -1,7 +1,5 @@
 package version4;
-
 import java.time.LocalDate;
-
 public class Hourly extends Employee {
     private float totalHoursWorked;
     private float ratePerHour;

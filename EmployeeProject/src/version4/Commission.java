@@ -1,7 +1,5 @@
 package version4;
-
 import java.time.LocalDate;
-
 public class Commission extends Employee {
     private double totalSales;
 

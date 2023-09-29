@@ -1,7 +1,5 @@
 package version4;
-
 import java.time.LocalDate;
-
 public class Piece extends Employee {
     private int totalPiecesFinished;
     private float ratePerPiece;
