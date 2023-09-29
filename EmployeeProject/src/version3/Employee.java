@@ -57,7 +57,7 @@ public class Employee {
         sb.append("Employee Name: ").append(getEmpName()).append("\n");
         sb.append("Employee ID: ").append(getEmpID()).append("\n");
         sb.append("Date Hired: ").append(getEmpDateHired()).append("\n");
-        sb.append("Date of Birth: ").append(getEmpBirthDate());
+        sb.append("Date of Birth: ").append(getEmpBirthDate()).append("\n");
         return sb.toString();
     }
 }
