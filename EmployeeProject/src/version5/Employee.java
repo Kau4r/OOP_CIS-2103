@@ -1,7 +1,7 @@
 package version5;
 import java.time.LocalDate;
 
-public abstract class Employee {
+public class Employee {
     private int empID;
     private Name empName;
     private LocalDate empBirthDate;
@@ -61,5 +61,4 @@ public abstract class Employee {
         return sb.toString();
     }
     
-    public abstract double computeSalary();
 }

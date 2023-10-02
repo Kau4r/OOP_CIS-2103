@@ -1,4 +1,5 @@
 package version5;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Optional;
@@ -10,7 +11,7 @@ public class EmployeeRoster {
         empRoster = new LinkedList<>();
     }
 
-    public EmployeeRoster(Employee[] empList){ 
+    public EmployeeRoster(Employee[] empList) {
         empRoster.addAll(Arrays.asList(empList));
     }
 
@@ -21,11 +22,29 @@ public class EmployeeRoster {
         System.out
                 .println("|-----|------------------------------------------|--------------------|------------------|");
         for (Employee emp : empRoster) {
-            System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", emp.getEmpID(),
-                    emp.getEmpName(),
-                    emp.getClass().getSimpleName(),
-                    emp.computeSalary());
-        }
+
+            if (emp instanceof Hourly) {
+                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", emp.getEmpID(),
+                        emp.getEmpName(),
+                        emp.getClass().getSimpleName(),
+                        ((Hourly)emp).computeSalary());
+            } else if (emp instanceof Piece) {
+                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", emp.getEmpID(),
+                        emp.getEmpName(),
+                        emp.getClass().getSimpleName(),
+                        ((Piece)emp).computeSalary());
+            } else if (emp instanceof Commission) {
+                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", emp.getEmpID(),
+                        emp.getEmpName(),
+                        emp.getClass().getSimpleName(),
+                        ((Commission)emp).computeSalary());
+            } else {
+                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", emp.getEmpID(),
+                        emp.getEmpName(),
+                        emp.getClass().getSimpleName(),
+                        ((BasePlusCommission)emp).computeSalary());
+            }
+}
         System.out
                 .println("|-----|------------------------------------------|--------------------|------------------|");
     }

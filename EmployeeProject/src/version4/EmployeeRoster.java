@@ -1,4 +1,5 @@
 package version4;
+
 public class EmployeeRoster {
     private Employee[] empList;
     private int count = 0;
@@ -9,6 +10,7 @@ public class EmployeeRoster {
     }
 
     public EmployeeRoster(int MAX) {
+        this.MAX = MAX;
         this.empList = new Employee[MAX];
     }
 
@@ -28,10 +30,28 @@ public class EmployeeRoster {
                 .println("|-----|------------------------------------------|--------------------|------------------|");
         int x;
         for (x = 0; x < count; x++) {
-            System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", empList[x].getEmpID(),
-                    empList[x].getEmpName(),
-                    empList[x].getClass().getSimpleName(),
-                    empList[x].computeSalary());
+
+            if (empList[x] instanceof Hourly) {
+                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", empList[x].getEmpID(),
+                        empList[x].getEmpName(),
+                        empList[x].getClass().getSimpleName(),
+                        ((Hourly) empList[x]).computeSalary());
+            } else if (empList[x] instanceof Piece) {
+                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", empList[x].getEmpID(),
+                        empList[x].getEmpName(),
+                        empList[x].getClass().getSimpleName(),
+                        ((Piece) empList[x]).computeSalary());
+            } else if (empList[x] instanceof Commission) {
+                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", empList[x].getEmpID(),
+                        empList[x].getEmpName(),
+                        empList[x].getClass().getSimpleName(),
+                        ((Commission) empList[x]).computeSalary());
+            } else {
+                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", empList[x].getEmpID(),
+                        empList[x].getEmpName(),
+                        empList[x].getClass().getSimpleName(),
+                        ((BasePlusCommission) empList[x]).computeSalary());
+            }
         }
         System.out
                 .println("|-----|------------------------------------------|--------------------|------------------|");
@@ -81,7 +101,8 @@ public class EmployeeRoster {
 
     public boolean updateEmp(int empID, Employee emp) {
         int x;
-        for (x = 0; x < count && empList[x].getEmpID() != empID; x++) {}
+        for (x = 0; x < count && empList[x].getEmpID() != empID; x++) {
+        }
         if (x < count) {
             empList[x] = emp;
             System.out.println("Successfully Updated Employee");
@@ -92,7 +113,8 @@ public class EmployeeRoster {
     public Employee removeEmployee(int ID) {
         Employee rmEmp = null;
         int x;
-        for (x = 0; x < count && empList[x].getEmpID() != ID; x++) {}
+        for (x = 0; x < count && empList[x].getEmpID() != ID; x++) {
+        }
         if (x < count) {
             rmEmp = empList[x];
             for (; x < count; x++) {
