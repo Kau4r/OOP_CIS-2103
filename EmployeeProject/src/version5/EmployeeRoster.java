@@ -16,35 +16,36 @@ public class EmployeeRoster {
     }
 
     public void displayAllEmp() {
+
         System.out
                 .println("|-----|------------------------------------------|--------------------|------------------|");
         System.out.printf("| %-3s | %-40s | %-19s| %-16s |\n", "ID", "Name", "Type", "Salary");
         System.out
                 .println("|-----|------------------------------------------|--------------------|------------------|");
         for (Employee emp : empRoster) {
+            String classType = emp.getClass().getSimpleName();
+            double salary = 0.0;
 
             if (emp instanceof Hourly) {
-                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", emp.getEmpID(),
-                        emp.getEmpName(),
-                        emp.getClass().getSimpleName(),
-                        ((Hourly)emp).computeSalary());
+                Hourly hourlyEmployee = (Hourly) emp;
+                salary = hourlyEmployee.computeSalary();
             } else if (emp instanceof Piece) {
-                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", emp.getEmpID(),
-                        emp.getEmpName(),
-                        emp.getClass().getSimpleName(),
-                        ((Piece)emp).computeSalary());
+                Piece pieceEmployee = (Piece) emp;
+                salary = pieceEmployee.computeSalary();
             } else if (emp instanceof Commission) {
-                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", emp.getEmpID(),
-                        emp.getEmpName(),
-                        emp.getClass().getSimpleName(),
-                        ((Commission)emp).computeSalary());
+                Commission commissionEmployee = (Commission) emp;
+                salary = commissionEmployee.computeSalary();
             } else {
-                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", emp.getEmpID(),
-                        emp.getEmpName(),
-                        emp.getClass().getSimpleName(),
-                        ((BasePlusCommission)emp).computeSalary());
+                BasePlusCommission basePlusCommissionEmployee = (BasePlusCommission) emp;
+                salary = basePlusCommissionEmployee.computeSalary();
             }
-}
+
+            System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", emp.getEmpID(),
+                    emp.getEmpName(),
+                    classType,
+                    salary);
+        }
+
         System.out
                 .println("|-----|------------------------------------------|--------------------|------------------|");
     }

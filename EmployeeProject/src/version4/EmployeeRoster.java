@@ -23,6 +23,7 @@ public class EmployeeRoster {
     }
 
     public void displayAllEmp() {
+
         System.out
                 .println("|-----|------------------------------------------|--------------------|------------------|");
         System.out.printf("| %-3s | %-40s | %-19s| %-16s |\n", "ID", "Name", "Type", "Salary");
@@ -30,29 +31,29 @@ public class EmployeeRoster {
                 .println("|-----|------------------------------------------|--------------------|------------------|");
         int x;
         for (x = 0; x < count; x++) {
+            String classType = empList[x].getClass().getSimpleName();
+            double salary = 0.0;
 
             if (empList[x] instanceof Hourly) {
-                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", empList[x].getEmpID(),
-                        empList[x].getEmpName(),
-                        empList[x].getClass().getSimpleName(),
-                        ((Hourly) empList[x]).computeSalary());
+                Hourly hourlyEmployee = (Hourly) empList[x];
+                salary = hourlyEmployee.computeSalary();
             } else if (empList[x] instanceof Piece) {
-                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", empList[x].getEmpID(),
-                        empList[x].getEmpName(),
-                        empList[x].getClass().getSimpleName(),
-                        ((Piece) empList[x]).computeSalary());
+                Piece pieceEmployee = (Piece) empList[x];
+                salary = pieceEmployee.computeSalary();
             } else if (empList[x] instanceof Commission) {
-                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", empList[x].getEmpID(),
-                        empList[x].getEmpName(),
-                        empList[x].getClass().getSimpleName(),
-                        ((Commission) empList[x]).computeSalary());
+                Commission commissionEmployee = (Commission) empList[x];
+                salary = commissionEmployee.computeSalary();
             } else {
-                System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", empList[x].getEmpID(),
-                        empList[x].getEmpName(),
-                        empList[x].getClass().getSimpleName(),
-                        ((BasePlusCommission) empList[x]).computeSalary());
+                BasePlusCommission basePlusCommissionEmployee = (BasePlusCommission) empList[x];
+                salary = basePlusCommissionEmployee.computeSalary();
             }
+
+            System.out.printf("| %-3d | %-40s | %-19s| PHP %-12.2f | \n", empList[x].getEmpID(),
+                    empList[x].getEmpName(),
+                    classType,
+                    salary);
         }
+
         System.out
                 .println("|-----|------------------------------------------|--------------------|------------------|");
     }
